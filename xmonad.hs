@@ -1,34 +1,34 @@
-import qualified Data.Map as M
-import Data.Ratio ( (%) )
-import Control.Monad
-import Control.OldException
+import           Control.Exception
+import           Control.Monad
+import qualified Data.Map                            as M
+import           Data.Ratio                          ((%))
 --import DBus
 --import DBus.Connection
 --import DBus.Message
-import XMonad hiding ( (|||) )
-import XMonad.Actions.TagWindows
-import XMonad.Actions.UpdatePointer
+import           XMonad                              hiding ((|||))
+import           XMonad.Actions.TagWindows
+import           XMonad.Actions.UpdatePointer
 --import XMonad.Config.Gnome
-import XMonad.Config.Kde
+import           XMonad.Config.Kde
 --import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.SetWMName
-import XMonad.Layout.Combo
-import XMonad.Layout.Grid
-import XMonad.Layout.IM
-import XMonad.Layout.LayoutCombinators ( (|||) )
-import XMonad.Layout.MultiToggle
-import XMonad.Layout.MultiToggle.Instances
-import XMonad.Layout.NoBorders
-import XMonad.Layout.PerWorkspace
-import XMonad.Layout.Reflect
-import XMonad.Layout.ResizableTile
-import XMonad.Layout.Tabbed
-import XMonad.ManageHook
-import XMonad.Prompt
-import qualified XMonad.StackSet as W
-import XMonad.Util.NamedScratchpad
-import XMonad.Util.Scratchpad
+import           XMonad.Hooks.ManageDocks
+import           XMonad.Hooks.SetWMName
+import           XMonad.Layout.Combo
+import           XMonad.Layout.Grid
+import           XMonad.Layout.IM
+import           XMonad.Layout.LayoutCombinators     ((|||))
+import           XMonad.Layout.MultiToggle
+import           XMonad.Layout.MultiToggle.Instances
+import           XMonad.Layout.NoBorders
+import           XMonad.Layout.PerWorkspace
+import           XMonad.Layout.Reflect
+import           XMonad.Layout.ResizableTile
+import           XMonad.Layout.Tabbed
+import           XMonad.ManageHook
+import           XMonad.Prompt
+import qualified XMonad.StackSet                     as W
+import           XMonad.Util.NamedScratchpad
+import           XMonad.Util.Scratchpad
 
 myConfig = kde4Config
 
@@ -48,9 +48,9 @@ myManage = composeAll . concat $ [ [(role =? "gimp-dock" <||> role =? "gimp-tool
                                  , [resource =? r --> doIgnore | r <- myIgnoreResources]
                                  ]
     where
-    myFloats = ["MPlayer", "Plasma-desktop", "Plasma", "kmix"]
-    myOtherFloats = ["alsamixer", "Plasma-desktop", "kmix"]
-    myIgnoreResources = ["Do"]
+    myFloats = ["MPlayer", "Plasma-desktop", "Plasma", "kmix", "Lancelot", "Klipper"]
+    myOtherFloats = ["alsamixer", "Plasma-desktop", "kmix", "Input Helper"]
+    myIgnoreResources = ["Do", "Lancelot"]
     role = stringProperty "WM_WINDOW_ROLE"
 
 myKey x = [ ((modm .|. shiftMask, xK_h), sendMessage MirrorShrink)
